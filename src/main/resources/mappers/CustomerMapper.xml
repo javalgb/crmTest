@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yjxxt.crm.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.yjxxt.crm.bean.Customer" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="c_name" property="cName" jdbcType="VARCHAR" />
+    <result column="c_addr" property="cAddr" jdbcType="VARCHAR" />
+    <result column="c_phone" property="cPhone" jdbcType="VARCHAR" />
+    <result column="c_emai" property="cEmai" jdbcType="VARCHAR" />
+    <result column="c_isVip" property="cIsvip" jdbcType="INTEGER" />
+    <result column="c_date" property="cDate" jdbcType="TIMESTAMP" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, c_name, c_addr, c_phone, c_emai, c_isVip, c_date, is_valid, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_customer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yjxxt.crm.bean.Customer" >
+    insert into t_customer (id, c_name, c_addr, 
+      c_phone, c_emai, c_isVip, 
+      c_date, is_valid, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, #{cAddr,jdbcType=VARCHAR}, 
+      #{cPhone,jdbcType=VARCHAR}, #{cEmai,jdbcType=VARCHAR}, #{cIsvip,jdbcType=INTEGER}, 
+      #{cDate,jdbcType=TIMESTAMP}, #{isValid,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yjxxt.crm.bean.Customer" >
+    insert into t_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cName != null" >
+        c_name,
+      </if>
+      <if test="cAddr != null" >
+        c_addr,
+      </if>
+      <if test="cPhone != null" >
+        c_phone,
+      </if>
+      <if test="cEmai != null" >
+        c_emai,
+      </if>
+      <if test="cIsvip != null" >
+        c_isVip,
+      </if>
+      <if test="cDate != null" >
+        c_date,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cAddr != null" >
+        #{cAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhone != null" >
+        #{cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmai != null" >
+        #{cEmai,jdbcType=VARCHAR},
+      </if>
+      <if test="cIsvip != null" >
+        #{cIsvip,jdbcType=INTEGER},
+      </if>
+      <if test="cDate != null" >
+        #{cDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yjxxt.crm.bean.Customer" >
+    update t_customer
+    <set >
+      <if test="cName != null" >
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cAddr != null" >
+        c_addr = #{cAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhone != null" >
+        c_phone = #{cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmai != null" >
+        c_emai = #{cEmai,jdbcType=VARCHAR},
+      </if>
+      <if test="cIsvip != null" >
+        c_isVip = #{cIsvip,jdbcType=INTEGER},
+      </if>
+      <if test="cDate != null" >
+        c_date = #{cDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yjxxt.crm.bean.Customer" >
+    update t_customer
+    set c_name = #{cName,jdbcType=VARCHAR},
+      c_addr = #{cAddr,jdbcType=VARCHAR},
+      c_phone = #{cPhone,jdbcType=VARCHAR},
+      c_emai = #{cEmai,jdbcType=VARCHAR},
+      c_isVip = #{cIsvip,jdbcType=INTEGER},
+      c_date = #{cDate,jdbcType=TIMESTAMP},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--条件查询-->
+  <select id="selectByParams" parameterType="CustomerQuery" resultType="Customer">
+    select * from t_customer
+    <where>
+      and is_valid=1
+      <if test="cName!=null and cName!=''">
+        and c_name like concat("%",#{cName},"%")
+      </if>
+      <if test="cAddr!=null and cAddr!=''">
+        and c_addr like concat("%",#{cAddr},"%")
+      </if>
+      <if test="cPhone!=null and cPhone!=''">
+        and c_phone like concat("%",#{cPhone},"%")
+      </if>
+    </where>
+  </select>
+  <select id="selectCustomerByName" resultType="com.yjxxt.crm.bean.Customer">
+    select * from t_customer where is_valid=1 and c_name=#{cName}
+  </select>
+
+
+  <update id="deleteBatch">
+    update t_customer
+    set is_valid=0
+    <where>
+      id in
+      <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+      </foreach>
+    </where>
+  </update>
+</mapper>

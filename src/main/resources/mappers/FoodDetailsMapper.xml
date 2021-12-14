@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yjxxt.crm.mapper.FoodDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.yjxxt.crm.bean.FoodDetails" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="food_name" property="foodName" jdbcType="VARCHAR" />
+    <result column="food_intro" property="foodIntro" jdbcType="VARCHAR" />
+    <result column="food_img" property="foodImg" jdbcType="VARCHAR" />
+    <result column="food_type_name" property="foodTypeName" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="is_have" property="isHave" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, food_name, food_intro, food_img, food_type_name, price, is_have, is_valid, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_food_details
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_food_details
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yjxxt.crm.bean.FoodDetails" >
+    insert into t_food_details (id, food_name, food_intro, 
+      food_img, food_type_name, price, 
+      is_have, is_valid, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{foodIntro,jdbcType=VARCHAR}, 
+      #{foodImg,jdbcType=VARCHAR}, #{foodTypeName,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{isHave,jdbcType=INTEGER}, #{isValid,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yjxxt.crm.bean.FoodDetails" >
+    insert into t_food_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="foodName != null" >
+        food_name,
+      </if>
+      <if test="foodIntro != null" >
+        food_intro,
+      </if>
+      <if test="foodImg != null" >
+        food_img,
+      </if>
+      <if test="foodTypeName != null" >
+        food_type_name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="isHave != null" >
+        is_have,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="foodName != null" >
+        #{foodName,jdbcType=VARCHAR},
+      </if>
+      <if test="foodIntro != null" >
+        #{foodIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="foodImg != null" >
+        #{foodImg,jdbcType=VARCHAR},
+      </if>
+      <if test="foodTypeName != null" >
+        #{foodTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="isHave != null" >
+        #{isHave,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yjxxt.crm.bean.FoodDetails" >
+    update t_food_details
+    <set >
+      <if test="foodName != null" >
+        food_name = #{foodName,jdbcType=VARCHAR},
+      </if>
+      <if test="foodIntro != null" >
+        food_intro = #{foodIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="foodImg != null" >
+        food_img = #{foodImg,jdbcType=VARCHAR},
+      </if>
+      <if test="foodTypeName != null" >
+        food_type_name = #{foodTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="isHave != null" >
+        is_have = #{isHave,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yjxxt.crm.bean.FoodDetails" >
+    update t_food_details
+    set food_name = #{foodName,jdbcType=VARCHAR},
+      food_intro = #{foodIntro,jdbcType=VARCHAR},
+      food_img = #{foodImg,jdbcType=VARCHAR},
+      food_type_name = #{foodTypeName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      is_have = #{isHave,jdbcType=INTEGER},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <!--条件查询-->
+  <select id="selectByParams" parameterType="FoodDetailsQuery" resultType="FoodDetails">
+    select * from t_food_details
+    <where>
+      and is_valid=1
+      <if test="foodTypeName!=null and foodTypeName!=''">
+        and food_type_name like concat("%",#{foodTypeName},"%")
+      </if>
+      <if test="foodIntro!=null and foodIntro!=''">
+        and food_intro like concat("%",#{foodIntro},"%")
+      </if>
+      <if test="foodName!=null and foodName!=''">
+        and food_name like concat("%",#{foodName},"%")
+      </if>
+    </where>
+  </select>
+  <select id="selectByFoodName" resultType="com.yjxxt.crm.bean.FoodDetails">
+    select * from t_food_details where food_name=#{foodName}
+  </select>
+    <select id="selectFoodNames" parameterType="string" resultType="java.util.Map">
+      select id,food_name as foodName from t_food_details
+      <where>
+        <if test="foodTypeName!=null and foodTypeName!=''">
+            food_type_name=#{foodTypeName}
+        </if>
+      </where>
+    </select>
+  <select id="selectPriceByFoodName" resultType="java.util.Map">
+        select price from t_food_details where food_name=#{foodName}
+  </select>
+  <select id="selectFoodTypes" resultType="java.util.Map">
+    select distinct food_type_name as foodTypeName from t_food_details
+  </select>
+
+
+  <!--批量删除
+  update t_user set is_valid=0 where id in (1,2,3);
+-->
+  <update id="deleteBatch">
+    update t_food_details
+    set is_valid=0
+    <where>
+      id in
+      <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+      </foreach>
+    </where>
+  </update>
+</mapper>
